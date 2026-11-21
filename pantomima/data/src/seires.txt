@@ -10,7 +10,6 @@ Lost
 Prison Break
 Dexter
 Grey's Anatomy
-ER
 Dr. House
 The Walking Dead
 La Casa de Papel
@@ -24,8 +23,6 @@ Desperate Housewives
 Gossip Girl
 Gilmore Girls
 The Sopranos
-The Wire
-Mad Men
 Suits
 Sherlock
 Doctor Who
@@ -33,13 +30,10 @@ Black Mirror
 The Witcher
 Vikings
 Narcos
-Ozark
-Dark
 Wednesday
 Emily in Paris
 The Mandalorian
 The Boys
-Succession
 The Last of Us
 House of the Dragon
 Οι Σίμπσονς
@@ -56,9 +50,7 @@ Scrubs
 That '70s Show
 Malcolm in the Middle
 Οι Χ Φάκελοι
-Twin Peaks
 24
-Heroes
 Glee
 Riverdale
 13 Reasons Why
@@ -71,11 +63,6 @@ The Bear
 Yellowstone
 Chernobyl
 Band of Brothers
-Westworld
-True Detective
-Fargo
-Mr. Robot
-The Good Place
 Lucifer
 Supernatural
 The Vampire Diaries
@@ -84,50 +71,27 @@ Charmed
 Baywatch
 Ο Ιππότης της Ασφάλτου
 Μάγκιβερ
-MacGyver
 Κολόμπο
-Ο Ντέρικ
 Αστυνόμος Σαΐνης
 Ο Επιθεωρητής Ρεξ
 Ο Πρίγκιπας του Μπελ Έαρ
 Full House
 Η Νταντά
-Η Οικογένεια Άνταμς
-Blackadder
 Μίστερ Μπιν
-Fawlty Towers
-Allo Allo
 Monk
 Castle
 Bones
 NCIS
 CSI
 Criminal Minds
-Law & Order
 The Mentalist
-Dallas
-Δυναστεία
-Άλφ
-Η Μαγεμένη
-Τζίνι μου
 Βασίλισσα του Νότου
-Ugly Betty
-The Handmaid's Tale
 Orange Is the New Black
-The Umbrella Academy
-Shadow and Bone
 Outlander
 The Queen's Gambit
 Cobra Kai
 Lupin
 You
-Mindhunter
-Severance
-The White Lotus
-Fleabag
-Killing Eve
-Big Little Lies
-Normal People
 Dragon Ball
 Naruto
 One Piece
@@ -140,12 +104,10 @@ Sailor Moon
 Κωνσταντίνου και Ελένης
 Το Καφέ της Χαράς
 Παρά Πέντε
-Του Κουτιού
 Οι Στάβλοι της Εριέτας Ζαΐμη
 Εγκλήματα
 Ντόλτσε Βίτα
 Οι Μεν και οι Δεν
-Αυτή η Νύχτα Μένει
 Βέρα στο Δεξί
 Λάμψη
 Καλημέρα Ζωή
@@ -166,7 +128,88 @@ Sailor Moon
 Μην Αρχίζεις τη Μουρμούρα
 Γιατί Ρε Πατέρα;
 Κλεμμένα Όνειρα
-Το Μυστικό της Ελάφινας
-Το Σπίτι Δίπλα στο Ποτάμι
 Ρετιρέ
-Λοιπόν, πώς σας φαίνεται;
+Οι Απαράδεκτοι
+Ο Κλέαρχος, η Μαρίνα και ο Κοντός
+Μαρία η Άσχημη
+Τα Παιδιά της Νιόβης
+Μπρούσκο
+Έλα στη Θέση μου
+Το Κόκκινο Δωμάτιο
+Σαββατογεννημένες
+Πέτα τη Φριτέζα
+Επτά Θανάσιμες Πεθερές
+Ψίθυροι Καρδιάς
+Κασσάνδρα
+Σουλεϊμάν ο Μεγαλοπρεπής
+Hannah Montana
+iCarly
+Zack & Cody
+Wizards of Waverly Place
+The Flash
+Arrow
+Smallville
+Chicago Fire
+9-1-1
+The Good Doctor
+Hawaii Five-0
+Η Ομάδα Α
+Miami Vice
+Magnum P.I.
+Murder, She Wrote
+Star Trek
+Loki
+WandaVision
+Daredevil
+Moon Knight
+Hawkeye
+Andor
+Reacher
+Jack Ryan
+Sons of Anarchy
+Homeland
+House of Cards
+The O.C.
+Beverly Hills 90210
+Saved by the Bell
+Hannibal
+American Horror Story
+The Haunting of Hill House
+Queen Charlotte
+Virgin River
+Arcane
+BoJack Horseman
+The Last Kingdom
+Rome
+Spartacus
+The Tudors
+Merlin
+The Rookie
+Blue Bloods
+Silicon Valley
+Community
+Arrested Development
+Everybody Loves Raymond
+Frasier
+Cheers
+Will & Grace
+Young Sheldon
+New Girl
+2 Broke Girls
+Pretty Little Liars
+Dawson's Creek
+One Tree Hill
+The Rings of Power
+Shōgun
+The Penguin
+Baby Reindeer
+Adolescence
+Ginny & Georgia
+Outer Banks
+Lost in Space
+The Night Agent
+Bodyguard
+Line of Duty
+Luther
+Poirot
+Midsomer Murders

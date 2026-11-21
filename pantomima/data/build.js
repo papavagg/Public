@@ -46,6 +46,8 @@ const MANUAL = [
   { id: 'fagita', name: 'Φαγητά & Ποτά', icon: '🍕', file: 'fagita.txt' },
   { id: 'athlimata', name: 'Αθλήματα & Παιχνίδια', icon: '⚽', file: 'athlimata.txt' },
   { id: 'energeies', name: 'Ενέργειες', icon: '🏃', file: 'energeies.txt' },
+  { id: 'synaisthimata', name: 'Συναισθήματα', icon: '😱', file: 'synaisthimata.txt' },
+  { id: 'stigmes', name: 'Στιγμές της Ζωής', icon: '🎂', file: 'stigmes.txt' },
 ];
 
 // Ντετερμινιστική τυχαιότητα, ώστε κάθε build να βγάζει τις ίδιες ερωτήσεις
