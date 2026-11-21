@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1b1640">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Παντομίμα">
+  <title>Παντομίμα</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ΑΡΧΙΚΗ -->
+    <section class="screen" data-screen="home">
+      <div class="home-hero">
+        <div class="logo">🎭</div>
+        <h1>Παντομίμα</h1>
+        <p class="tagline">Χωρίς λόγια, μόνο κινήσεις!</p>
+        <p class="count" id="home-count"></p>
+      </div>
+      <div class="stack">
+        <button class="btn btn-primary btn-xl" data-action="new-game">Νέο παιχνίδι</button>
+        <button class="btn btn-secondary btn-xl" data-action="open-saves">Παλιό παιχνίδι <span class="badge" id="saves-badge" hidden></span></button>
+      </div>
+      <div class="home-footer">
+        <button class="btn-link" data-action="toggle-sound" id="sound-toggle">🔊 Ήχος: ναι</button>
+        <button class="btn-link" data-action="open-rules">Πώς παίζεται;</button>
+      </div>
+    </section>
+
+    <!-- ΑΠΟΘΗΚΕΥΜΕΝΑ -->
+    <section class="screen" data-screen="saves" hidden>
+      <header class="topbar">
+        <button class="icon-btn" data-action="go-home" aria-label="Πίσω">←</button>
+        <h2>Αποθηκευμένα παιχνίδια</h2>
+      </header>
+      <div id="saves-list" class="saves-list"></div>
+    </section>
+
+    <!-- ΒΗΜΑ 1: ΟΜΑΔΕΣ -->
+    <section class="screen" data-screen="setup-teams" hidden>
+      <header class="topbar">
+        <button class="icon-btn" data-action="go-home" aria-label="Πίσω">←</button>
+        <h2>Ομάδες</h2>
+        <span class="step">1/2</span>
+      </header>
+      <div class="card">
+        <label class="label">Πόσες ομάδες παίζουν;</label>
+        <div class="stepper" id="team-count-stepper">
+          <button class="icon-btn" data-action="team-count" data-delta="-1" aria-label="Λιγότερες">−</button>
+          <output id="team-count">2</output>
+          <button class="icon-btn" data-action="team-count" data-delta="1" aria-label="Περισσότερες">+</button>
+        </div>
+      </div>
+      <div id="teams-editor" class="teams-editor"></div>
+      <div class="bottom-bar">
+        <button class="btn btn-primary btn-block" data-action="teams-next">Συνέχεια →</button>
+      </div>
+    </section>
+
+    <!-- ΒΗΜΑ 2: ΡΥΘΜΙΣΕΙΣ -->
+    <section class="screen" data-screen="setup-settings" hidden>
+      <header class="topbar">
+        <button class="icon-btn" data-action="back-to-teams" aria-label="Πίσω">←</button>
+        <h2>Ρυθμίσεις</h2>
+        <span class="step">2/2</span>
+      </header>
+
+      <div class="card">
+        <label class="label">⏱️ Χρόνος για κάθε ερώτηση</label>
+        <div class="chips" id="time-chips"></div>
+        <div class="custom-row">
+          <span>ή</span>
+          <input type="number" id="time-custom" min="10" max="600" inputmode="numeric" placeholder="άλλο">
+          <span>δευτερόλεπτα</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <label class="label">🔁 Γύροι</label>
+        <p class="hint">Σε κάθε γύρο παίζει μία φορά κάθε ομάδα.</p>
+        <div class="stepper">
+          <button class="icon-btn" data-action="rounds" data-delta="-1" aria-label="Λιγότεροι">−</button>
+          <output id="rounds">5</output>
+          <button class="icon-btn" data-action="rounds" data-delta="1" aria-label="Περισσότεροι">+</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <label class="label">⏭️ Skip ανά ομάδα (για όλο το παιχνίδι)</label>
+        <div class="stepper">
+          <button class="icon-btn" data-action="skips" data-delta="-1" aria-label="Λιγότερα">−</button>
+          <output id="skips">3</output>
+          <button class="icon-btn" data-action="skips" data-delta="1" aria-label="Περισσότερα">+</button>
+        </div>
+        <label class="switch-row"><input type="checkbox" id="skips-unlimited"> Απεριόριστα skip</label>
+      </div>
+
+      <div class="card">
+        <div class="label-row">
+          <label class="label">📂 Κατηγορίες</label>
+          <div>
+            <button class="btn-link" data-action="cats-all">Όλες</button>
+            <button class="btn-link" data-action="cats-none">Καμία</button>
+          </div>
+        </div>
+        <div id="cats" class="cats"></div>
+        <p class="hint" id="cats-total"></p>
+      </div>
+
+      <div class="bottom-bar">
+        <button class="btn btn-primary btn-block" data-action="start-game">Ξεκινάμε! 🎉</button>
+      </div>
+    </section>
+
+    <!-- ΣΕΙΡΑ ΟΜΑΔΑΣ -->
+    <section class="screen team-bg" data-screen="turn" hidden>
+      <header class="topbar on-color">
+        <button class="icon-btn" data-action="open-menu" aria-label="Μενού">☰</button>
+        <h2 id="turn-round"></h2>
+        <span></span>
+      </header>
+      <div class="turn-center">
+        <p class="turn-sub">Σειρά έχει η ομάδα</p>
+        <h1 class="turn-team" id="turn-team"></h1>
+        <div class="turn-meta" id="turn-meta"></div>
+        <p class="turn-hint">Δώσε το κινητό σε όποιον θα παίξει παντομίμα.<br>Οι υπόλοιποι της ομάδας… μην κοιτάτε! 🙈</p>
+        <button class="btn btn-light btn-xl" data-action="reveal">Δείξε μου την ερώτηση</button>
+      </div>
+      <div id="turn-scores" class="mini-scores"></div>
+    </section>
+
+    <!-- ΠΑΙΧΝΙΔΙ -->
+    <section class="screen team-bg" data-screen="play" hidden>
+      <header class="topbar on-color">
+        <button class="icon-btn" data-action="open-menu" aria-label="Μενού">☰</button>
+        <h2 id="play-team"></h2>
+        <span class="skips-left" id="play-skips"></span>
+      </header>
+      <div class="play-center">
+        <div class="timer" id="timer">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="timer-track" cx="60" cy="60" r="54"></circle>
+            <circle class="timer-bar" id="timer-bar" cx="60" cy="60" r="54"></circle>
+          </svg>
+          <span id="timer-text">60</span>
+        </div>
+        <div class="prompt-card" id="prompt-card">
+          <div class="prompt-cat" id="prompt-cat"></div>
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+      <div class="play-actions" id="play-actions-ready">
+        <button class="btn btn-ghost" data-action="skip" id="btn-skip-ready">⏭️ Skip</button>
+        <button class="btn btn-light btn-xl" data-action="start-timer">▶ Ξεκίνα τον χρόνο</button>
+      </div>
+      <div class="play-actions" id="play-actions-running" hidden>
+        <button class="btn btn-ghost" data-action="skip" id="btn-skip-running">⏭️ Skip</button>
+        <button class="btn btn-ghost" data-action="pause" aria-label="Παύση">❚❚</button>
+        <button class="btn btn-success btn-xl" data-action="correct">✓ Σωστό!</button>
+      </div>
+    </section>
+
+    <!-- ΑΠΟΤΕΛΕΣΜΑ ΓΥΡΟΥ -->
+    <section class="screen team-bg" data-screen="result" hidden>
+      <header class="topbar on-color">
+        <button class="icon-btn" data-action="open-menu" aria-label="Μενού">☰</button>
+        <h2 id="result-team"></h2>
+        <span></span>
+      </header>
+      <div class="result-center">
+        <div class="result-emoji" id="result-emoji"></div>
+        <h1 id="result-title"></h1>
+        <p class="result-answer">Η ερώτηση ήταν:<br><strong id="result-answer"></strong></p>
+        <button class="btn-link on-color" data-action="override" id="btn-override" hidden>Τελικά το βρήκαν (+1)</button>
+        <button class="btn-link on-color" data-action="undo-correct" id="btn-undo" hidden>Ακύρωση πόντου</button>
+      </div>
+      <div id="result-scores" class="mini-scores"></div>
+      <div class="bottom-bar">
+        <button class="btn btn-light btn-block btn-xl" data-action="next-turn" id="btn-next-turn">Επόμενη ομάδα →</button>
+      </div>
+    </section>
+
+    <!-- ΤΕΛΙΚΟ ΣΚΟΡ -->
+    <section class="screen" data-screen="final" hidden>
+      <canvas id="confetti" aria-hidden="true"></canvas>
+      <div class="final-head" id="final-head"></div>
+      <ol class="podium" id="final-list"></ol>
+      <div class="final-stats" id="final-stats"></div>
+      <div class="stack">
+        <button class="btn btn-primary btn-block" data-action="save-game" id="btn-final-save">💾 Αποθήκευση παιχνιδιού</button>
+        <button class="btn btn-secondary btn-block" data-action="rematch">🔁 Ρεβάνς με τις ίδιες ομάδες</button>
+        <button class="btn btn-ghost-dark btn-block" data-action="go-home">Αρχική</button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ΜΕΝΟΥ ΠΑΙΧΝΙΔΙΟΥ -->
+  <div class="modal" id="menu" hidden>
+    <div class="modal-box">
+      <h3>Παύση</h3>
+      <div id="menu-scores" class="menu-scores"></div>
+      <div class="stack">
+        <button class="btn btn-primary btn-block" data-action="close-menu">▶ Συνέχεια</button>
+        <button class="btn btn-secondary btn-block" data-action="save-game">💾 Αποθήκευση</button>
+        <button class="btn btn-secondary btn-block" data-action="end-game">🏁 Τέλος παιχνιδιού τώρα</button>
+        <button class="btn btn-ghost-dark btn-block" data-action="quit">Έξοδος στην αρχική</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ΔΙΑΛΟΓΟΣ ΚΕΙΜΕΝΟΥ / ΕΠΙΒΕΒΑΙΩΣΗΣ -->
+  <div class="modal" id="dialog" hidden>
+    <form class="modal-box" id="dialog-form" method="dialog">
+      <h3 id="dialog-title"></h3>
+      <p id="dialog-text"></p>
+      <input type="text" id="dialog-input" maxlength="60" hidden>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-ghost-dark" id="dialog-cancel">Άκυρο</button>
+        <button type="submit" class="btn btn-primary" id="dialog-ok">OK</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ΚΑΝΟΝΕΣ -->
+  <div class="modal" id="rules" hidden>
+    <div class="modal-box">
+      <h3>Πώς παίζεται</h3>
+      <ol class="rules">
+        <li>Φτιάξτε ομάδες, διαλέξτε όνομα και χρώμα για την καθεμία.</li>
+        <li>Ορίστε χρόνο ανά ερώτηση, γύρους, skip και κατηγορίες.</li>
+        <li>Σε κάθε γύρο παίζει μία φορά κάθε ομάδα. Ένας παίκτης βλέπει την ερώτηση και τη δείχνει με παντομίμα, <b>χωρίς λόγια και ήχους</b>.</li>
+        <li>Αν η ομάδα το βρει πριν τελειώσει ο χρόνος, παίρνει 1 πόντο.</li>
+        <li>Το skip αλλάζει την ερώτηση και ο χρόνος ξεκινάει από την αρχή. Κάθε ομάδα έχει συγκεκριμένο αριθμό skip για όλο το παιχνίδι.</li>
+        <li>Τα <b>Βιντεοπαιχνίδια</b> είναι πάντα στα αγγλικά.</li>
+        <li>Στο τέλος βλέπετε το σκορ και ποια ομάδα κέρδισε!</li>
+      </ol>
+      <button class="btn btn-primary btn-block" data-action="close-rules">Κατάλαβα</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

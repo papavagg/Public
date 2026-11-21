@@ -1,0 +1,15 @@
+{
+  "name": "Παντομίμα",
+  "short_name": "Παντομίμα",
+  "description": "Παιχνίδι παντομίμας στα ελληνικά με 20.000 ερωτήσεις",
+  "lang": "el",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1b1640",
+  "theme_color": "#1b1640",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

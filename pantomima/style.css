@@ -1,0 +1,299 @@
+:root {
+  --bg: #1b1640;
+  --bg-2: #262058;
+  --card: #2f2869;
+  --text: #ffffff;
+  --muted: #b9b4e6;
+  --primary: #ff5c8a;
+  --primary-2: #ff8a5c;
+  --secondary: #3e3690;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --team: #6d28d9;
+  --team-ink: #ffffff;
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .25);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+[hidden] { display: none !important; }
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 50% -10%, #3b2f8f 0%, var(--bg) 60%);
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+#app { max-width: 640px; margin: 0 auto; min-height: 100%; }
+
+.screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+h1, h2, h3 { margin: 0; line-height: 1.15; }
+h2 { font-size: 1.2rem; }
+
+/* ---------- Κουμπιά ---------- */
+.btn {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform .08s ease, filter .15s ease, opacity .15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  touch-action: manipulation;
+}
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn-xl { padding: 18px 26px; font-size: 1.2rem; }
+.btn-block { width: 100%; }
+.btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-2)); box-shadow: 0 8px 22px rgba(255, 92, 138, .35); }
+.btn-secondary { background: var(--secondary); }
+.btn-success { background: var(--success); color: #062b14; box-shadow: 0 8px 22px rgba(0,0,0,.2); }
+.btn-light { background: #fff; color: #1f1a3d; box-shadow: 0 8px 22px rgba(0,0,0,.2); }
+.btn-ghost { background: rgba(255,255,255,.18); color: var(--team-ink); }
+.btn-ghost-dark { background: transparent; border: 2px solid rgba(255,255,255,.2); }
+.btn-danger { background: var(--danger); }
+
+.btn-link {
+  background: none; border: 0; color: var(--muted); font: inherit; font-weight: 600;
+  padding: 8px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+}
+.btn-link.on-color { color: var(--team-ink); opacity: .85; }
+
+.icon-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 0; background: rgba(255,255,255,.12); color: inherit;
+  font-size: 1.4rem; font-weight: 700; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.icon-btn:active { transform: scale(.94); }
+
+.badge {
+  background: #fff; color: var(--bg); border-radius: 999px; font-size: .8rem;
+  padding: 2px 8px; margin-left: 4px;
+}
+
+.stack { display: flex; flex-direction: column; gap: 12px; }
+
+/* ---------- Αρχική ---------- */
+[data-screen="home"] { justify-content: center; text-align: center; }
+.home-hero { margin-bottom: 24px; }
+.logo { font-size: 84px; animation: bob 2.6s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(-8px) rotate(-4deg); } }
+.home-hero h1 { font-size: 2.8rem; letter-spacing: -.02em; }
+.tagline { color: var(--muted); margin: 8px 0 0; font-size: 1.1rem; }
+.count { color: var(--muted); font-size: .9rem; opacity: .8; }
+.home-footer { margin-top: 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- Topbar ---------- */
+.topbar { display: flex; align-items: center; gap: 12px; }
+.topbar h2 { flex: 1; text-align: center; }
+.topbar > span, .topbar .step { min-width: 44px; text-align: right; color: var(--muted); font-weight: 600; }
+.topbar.on-color { color: var(--team-ink); }
+.topbar.on-color .icon-btn { background: rgba(0,0,0,.15); }
+
+/* ---------- Κάρτες / φόρμες ---------- */
+.card { background: var(--card); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.label { display: block; font-weight: 700; margin-bottom: 10px; }
+.label-row { display: flex; justify-content: space-between; align-items: center; }
+.label-row .label { margin: 0; }
+.hint { color: var(--muted); margin: 4px 0 10px; font-size: .9rem; }
+
+.stepper { display: flex; align-items: center; justify-content: center; gap: 24px; }
+.stepper output { font-size: 2rem; font-weight: 800; min-width: 56px; text-align: center; }
+.stepper.disabled { opacity: .35; pointer-events: none; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 2px solid rgba(255,255,255,.18); background: transparent; color: var(--text);
+  padding: 10px 16px; border-radius: 999px; font: inherit; font-weight: 700; cursor: pointer;
+}
+.chip.active { background: #fff; color: var(--bg); border-color: #fff; }
+
+.custom-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; color: var(--muted); }
+input[type="number"], input[type="text"] {
+  background: rgba(255,255,255,.08); border: 2px solid rgba(255,255,255,.15); color: var(--text);
+  border-radius: 12px; padding: 10px 12px; font: inherit; font-size: 1rem; width: 100%;
+  min-width: 0;
+}
+.custom-row input { width: 90px; }
+input:focus { outline: none; border-color: var(--primary); }
+
+.switch-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; justify-content: center; font-weight: 600; }
+.switch-row input { width: 22px; height: 22px; accent-color: var(--primary); }
+
+/* ---------- Επεξεργασία ομάδων ---------- */
+.teams-editor { display: flex; flex-direction: column; gap: 12px; }
+.team-edit { border-left: 8px solid var(--c, #888); }
+.team-edit .row { display: flex; gap: 10px; align-items: center; }
+.team-edit .dot { width: 36px; height: 36px; border-radius: 50%; background: var(--c); flex-shrink: 0; box-shadow: inset 0 0 0 3px rgba(255,255,255,.4); }
+.swatches { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.swatch {
+  width: 34px; height: 34px; border-radius: 50%; border: 3px solid transparent; cursor: pointer;
+  background: var(--c); padding: 0; position: relative;
+}
+.swatch.active { border-color: #fff; transform: scale(1.1); }
+.swatch.taken { opacity: .25; }
+.swatch-custom {
+  width: 34px; height: 34px; border-radius: 50%; border: 2px dashed rgba(255,255,255,.4);
+  overflow: hidden; position: relative; display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1rem; cursor: pointer;
+}
+.swatch-custom input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+
+/* ---------- Κατηγορίες ---------- */
+.cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-top: 12px; }
+.cat {
+  display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 14px;
+  background: rgba(255,255,255,.06); border: 2px solid transparent; cursor: pointer; user-select: none;
+  font-weight: 600; font-size: .95rem; line-height: 1.2;
+}
+.cat input { display: none; }
+.cat .ico { font-size: 1.3rem; }
+.cat small { display: block; color: var(--muted); font-weight: 500; font-size: .75rem; }
+.cat.on { background: rgba(255, 92, 138, .18); border-color: var(--primary); }
+
+.bottom-bar { margin-top: auto; position: sticky; bottom: max(12px, env(safe-area-inset-bottom)); padding-top: 8px; }
+
+/* ---------- Χρώμα ομάδας ---------- */
+.team-bg { background: var(--team); color: var(--team-ink); transition: background .4s ease; }
+body.in-team { background: var(--team); }
+
+.turn-center, .result-center, .play-center {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px;
+}
+.turn-sub { margin: 0; opacity: .85; font-size: 1.1rem; }
+.turn-team { font-size: clamp(2.2rem, 10vw, 3.6rem); word-break: break-word; }
+.turn-meta { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.pill { background: rgba(0,0,0,.18); border-radius: 999px; padding: 6px 12px; font-weight: 700; font-size: .9rem; }
+.turn-hint { opacity: .85; max-width: 360px; line-height: 1.45; }
+
+.mini-scores { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.mini-score {
+  display: flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border-radius: 999px;
+  background: rgba(0,0,0,.2); font-weight: 700; font-size: .9rem;
+}
+.mini-score .dot { width: 20px; height: 20px; border-radius: 50%; background: var(--c); border: 2px solid rgba(255,255,255,.7); }
+.mini-score.current { outline: 2px solid currentColor; }
+
+/* ---------- Χρονόμετρο ---------- */
+.timer { position: relative; width: 140px; height: 140px; }
+.timer svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.timer circle { fill: none; stroke-width: 10; }
+.timer-track { stroke: rgba(0,0,0,.18); }
+.timer-bar { stroke: currentColor; stroke-linecap: round; stroke-dasharray: 339.29; stroke-dashoffset: 0; transition: stroke-dashoffset .25s linear; }
+#timer-text { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2.6rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.timer.warn #timer-text { animation: pulse .5s ease-in-out infinite alternate; }
+.timer.warn .timer-bar { stroke: #fff; }
+@keyframes pulse { to { transform: scale(1.15); } }
+.timer.paused { opacity: .5; }
+
+.prompt-card {
+  background: #fff; color: #1f1a3d; border-radius: 24px; padding: 24px 20px; width: 100%;
+  box-shadow: 0 16px 40px rgba(0,0,0,.25); min-height: 180px; display: flex; flex-direction: column; justify-content: center; gap: 10px;
+  animation: pop .25s ease;
+}
+@keyframes pop { from { transform: scale(.9); opacity: 0; } }
+.prompt-cat { font-weight: 700; color: #6b6596; font-size: .95rem; }
+.prompt-text { font-size: clamp(1.6rem, 7vw, 2.4rem); font-weight: 800; line-height: 1.2; word-break: break-word; }
+.prompt-card.hidden-prompt .prompt-text { filter: blur(14px); user-select: none; }
+
+.play-actions { display: flex; gap: 10px; align-items: stretch; }
+.play-actions .btn-xl { flex: 1; }
+.skips-left { font-weight: 700; color: var(--team-ink) !important; opacity: .9; }
+
+.result-emoji { font-size: 80px; }
+.result-center h1 { font-size: 2.2rem; }
+.result-answer { font-size: 1.1rem; opacity: .95; line-height: 1.5; }
+.result-answer strong { font-size: 1.4rem; }
+
+/* ---------- Τελικό ---------- */
+[data-screen="final"] { position: relative; overflow: hidden; }
+#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+.final-head { text-align: center; padding-top: 16px; position: relative; z-index: 6; }
+.final-head .trophy { font-size: 80px; }
+.final-head h1 { font-size: clamp(1.8rem, 8vw, 2.6rem); margin-top: 8px; }
+.final-head p { color: var(--muted); margin: 6px 0 0; }
+.podium { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 6; }
+.podium li {
+  display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: var(--radius);
+  background: var(--c); color: var(--ink); box-shadow: var(--shadow);
+}
+.podium .pos { font-size: 1.6rem; width: 40px; text-align: center; }
+.podium .name { flex: 1; font-weight: 800; font-size: 1.15rem; word-break: break-word; }
+.podium .sub { display: block; font-weight: 600; font-size: .8rem; opacity: .85; }
+.podium .pts { font-size: 1.8rem; font-weight: 900; }
+.podium li.winner { transform: scale(1.03); outline: 3px solid #fff; }
+.final-stats { color: var(--muted); text-align: center; font-size: .9rem; position: relative; z-index: 6; }
+[data-screen="final"] .stack { position: relative; z-index: 6; margin-top: auto; }
+
+/* ---------- Αποθηκευμένα ---------- */
+.saves-list { display: flex; flex-direction: column; gap: 12px; }
+.save-item { display: flex; flex-direction: column; gap: 10px; }
+.save-item .top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+.save-item h3 { font-size: 1.1rem; word-break: break-word; }
+.save-item .date { color: var(--muted); font-size: .85rem; white-space: nowrap; }
+.save-item .status { font-size: .9rem; color: var(--muted); }
+.save-item .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.save-item .actions .btn { padding: 10px 16px; font-size: .95rem; }
+.empty { text-align: center; color: var(--muted); padding: 40px 16px; line-height: 1.6; }
+.empty .big { font-size: 56px; }
+
+/* ---------- Modals ---------- */
+.modal {
+  position: fixed; inset: 0; background: rgba(10, 8, 30, .7); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 50;
+}
+.modal-box {
+  background: var(--bg-2); color: var(--text); border-radius: 24px; padding: 22px; width: 100%; max-width: 420px;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; max-height: 90vh; overflow: auto;
+  animation: pop .2s ease;
+}
+.modal-box h3 { font-size: 1.3rem; text-align: center; }
+.modal-box p { margin: 0; color: var(--muted); text-align: center; line-height: 1.45; }
+.dialog-actions { display: flex; gap: 10px; }
+.dialog-actions .btn { flex: 1; }
+.menu-scores { display: flex; flex-direction: column; gap: 6px; }
+.menu-scores .row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 12px; background: rgba(255,255,255,.06); font-weight: 600; }
+.menu-scores .row .dot { width: 16px; height: 16px; border-radius: 50%; background: var(--c); }
+.menu-scores .row .n { margin-left: auto; font-weight: 800; }
+.rules { margin: 0; padding-left: 20px; line-height: 1.5; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
+.rules b { color: var(--text); }
+
+.toast {
+  position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); transform: translateX(-50%);
+  background: #fff; color: #1f1a3d; padding: 12px 20px; border-radius: 999px; font-weight: 700; z-index: 60;
+  box-shadow: var(--shadow); max-width: calc(100% - 32px); text-align: center;
+  animation: pop .2s ease;
+}
+
+@media (min-width: 700px) {
+  .screen { padding-left: 24px; padding-right: 24px; }
+}
+
+/* Κουμπιά παιχνιδιού σε μία γραμμή */
+.play-actions .btn { white-space: nowrap; padding-left: 16px; padding-right: 16px; }
+.play-actions .btn-ghost { font-size: 1rem; }
+.play-actions [data-action="pause"] { min-width: 56px; font-size: 1.1rem; letter-spacing: -2px; }
+.teams-editor { padding-bottom: 8px; }
